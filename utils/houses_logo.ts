@@ -10,7 +10,7 @@ export enum House {
   Saurian = "Saurian",
   Shadows = "Shadows",
   Skyborn = "Skyborn",
-  StarAlliance = "Star Alliance",
+  StarAlliance = "StarAlliance",
   Unfathomable = "Unfathomable",
   Untamed = "Untamed",
 }

@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { Linking, StyleSheet, Text, TextInput, TouchableOpacity, View, useColorScheme } from 'react-native';
 import { Colors } from '../../constants/theme';
@@ -54,6 +55,7 @@ export default function Settings() {
 
   const handleSave = () => {
     setApiKey(inputKey);
+    router.replace('/');
   };
 
   const clearMatchesCache = async () => {
@@ -118,6 +120,10 @@ export default function Settings() {
           <Text style={{ color: '#DB8925' }}>GitHub repo</Text>
         </TouchableOpacity>
       </View>
+
+      <Text style={{ color: textColor, marginTop: 20, textAlign: 'center' }}>
+        Made with ❤️ by NikLucoz
+      </Text>
     </View>
   );
 }
