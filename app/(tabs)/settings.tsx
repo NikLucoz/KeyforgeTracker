@@ -99,6 +99,25 @@ export default function Settings() {
           </TouchableOpacity>
         </View>
       )}
+
+      <Text style={{ color: textColor, marginTop: 20 }}>
+        All the data are fetch from the Decks Of Keyforge public API
+      </Text>
+
+      <Text style={{ color: textColor, marginTop: 20 }}>
+        This app is not affiliated with nor endorsed by Ghost Galaxy, all the artwork and game data are property of Ghost Galaxy 
+      </Text>
+
+      <View style={{ flexDirection: 'row', marginBottom: 10, flexWrap: 'wrap', marginTop: 20 }}>
+        <Text style={{ color: textColor }}>If you have any suggestion, want to collaborate or report a bug feel free to check</Text>
+        <Text style={{ color: textColor }}>the </Text>
+        <TouchableOpacity onPress={() => {
+          const url = 'https://github.com/NikLucoz/KeyforgeTracker';
+          Linking.openURL(url).catch(err => console.error('Failed to open URL:', err));
+        }}>
+          <Text style={{ color: '#DB8925' }}>GitHub repo</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
