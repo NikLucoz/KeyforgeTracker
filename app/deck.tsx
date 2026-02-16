@@ -1,10 +1,10 @@
 import { DeckResponse } from '@/types/deck-types';
 import { House, houseLogos } from '@/utils/houses_logo';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useLocalSearchParams, usePathname, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Match, MatchService } from '../utils/match-service';
 
 export default function DeckScreen() {
     const { deckResponse } = useLocalSearchParams();
@@ -14,31 +14,16 @@ export default function DeckScreen() {
 
     const { deck } = parsedDeckResponse;
 
-    const [matches, setMatches] = useState<{wins: number, losses: number, opponentId: string, opponentName: string}[]>([]);
+    const [matches, setMatches] = useState<Match[]>([]);
 
     const loadMatches = async () => {
-        try {
-            const saved = await AsyncStorage.getItem(`matches_${deck.keyforgeId}`);
-            if (saved) {
-                setMatches(JSON.parse(saved));
-            }
-        } catch (error) {
-            console.error('Error loading matches:', error);
-        }
+        const loadedMatches = await MatchService.loadMatches(deck.keyforgeId);
+        setMatches(loadedMatches);
     };
 
     useEffect(() => {
         loadMatches();
     }, [deck.keyforgeId, pathname]);
-
-    const saveMatches = async (newMatches: {wins: number, losses: number, opponentId: string, opponentName: string}[]) => {
-        setMatches(newMatches);
-        try {
-            await AsyncStorage.setItem(`matches_${deck.keyforgeId}`, JSON.stringify(newMatches));
-        } catch (error) {
-            console.error('Error saving matches:', error);
-        }
-    };
 
     const addMatch = () => {
         router.push(`/match?deckId=${deck.keyforgeId}&isNew=true`);

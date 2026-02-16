@@ -10,7 +10,7 @@ export const useCachedDecks = (apiKey: string | null) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const clearCache = async () => {
+  const clearDeckCache = async () => {
     try {
       await AsyncStorage.removeItem(`decks_${apiKey}`);
     } catch (error) {
@@ -80,5 +80,5 @@ export const useCachedDecks = (apiKey: string | null) => {
     }
   }, [apiKey]);
 
-  return { decks, loading, error, fetchDecks, clearCache };
+  return { decks, loading, error, fetchDecks, clearDeckCache };
 };

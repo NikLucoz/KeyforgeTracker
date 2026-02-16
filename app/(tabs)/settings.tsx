@@ -3,10 +3,11 @@ import { Linking, StyleSheet, Text, TextInput, TouchableOpacity, View, useColorS
 import { Colors } from '../../constants/theme';
 import { useApiKey } from '../../hooks/use-api-key';
 import { useCachedDecks } from '../../hooks/use-cached-decks';
+import { MatchService } from '../../utils/match-service';
 
 export default function Settings() {
   const { apiKey, setApiKey } = useApiKey();
-  const { fetchDecks, clearCache } = useCachedDecks(apiKey);
+  const { fetchDecks, clearDeckCache } = useCachedDecks(apiKey);
   const [inputKey, setInputKey] = useState(apiKey || '');
 
   const colorScheme = useColorScheme() ?? 'light';
@@ -55,6 +56,10 @@ export default function Settings() {
     setApiKey(inputKey);
   };
 
+  const clearMatchesCache = async () => {
+    await MatchService.clearMatchesCache();
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', marginBottom: 10, flexWrap: 'wrap' }}>
@@ -86,8 +91,11 @@ export default function Settings() {
           <TouchableOpacity style={styles.button} onPress={() => fetchDecks(true)}>
             <Text style={styles.buttonText}>Force Refresh Decks</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={clearCache}>
+          <TouchableOpacity style={styles.button} onPress={clearDeckCache}>
             <Text style={styles.buttonText}>Clear Decks Cache</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={clearMatchesCache}>
+            <Text style={styles.buttonText}>Clear Matches Cache</Text>
           </TouchableOpacity>
         </View>
       )}

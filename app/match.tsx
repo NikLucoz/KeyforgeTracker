@@ -1,16 +1,8 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
-
-
-type Match = {
-    wins: number;
-    losses: number;
-    opponentId: string;
-    opponentName: string;
-};
+import { Match, MatchService } from '../utils/match-service';
 
 export default function MatchScreen() {
     const { deckId, matchIndex, isNew } = useLocalSearchParams();
@@ -20,40 +12,26 @@ export default function MatchScreen() {
 
     useEffect(() => {
         const loadMatches = async () => {
-            try {
-                const saved = await AsyncStorage.getItem(`matches_${deckId}`);
-                if (saved) {
-                    const allMatches = JSON.parse(saved);
-                    setMatches(allMatches);
-                    if (matchIndex !== undefined && !isNew) {
-                        const idx = parseInt(matchIndex as string);
-                        if (allMatches[idx]) {
-                            setMatch(allMatches[idx]);
-                        }
-                    }
+            const allMatches = await MatchService.loadMatches(deckId as string);
+            setMatches(allMatches);
+            if (matchIndex !== undefined && !isNew) {
+                const idx = parseInt(matchIndex as string);
+                if (allMatches[idx]) {
+                    setMatch(allMatches[idx]);
                 }
-            } catch (error) {
-                console.error('Error loading matches:', error);
             }
         };
         loadMatches();
     }, [deckId, matchIndex, isNew]);
 
     const saveMatch = async () => {
-        const newMatches = [...matches];
         if (isNew) {
-            newMatches.push(match);
+            await MatchService.addMatch(deckId as string, match);
         } else {
             const idx = parseInt(matchIndex as string);
-            newMatches[idx] = match;
+            await MatchService.updateMatch(deckId as string, idx, match);
         }
-        setMatches(newMatches);
-        try {
-            await AsyncStorage.setItem(`matches_${deckId}`, JSON.stringify(newMatches));
-            router.back();
-        } catch (error) {
-            console.error('Error saving match:', error);
-        }
+        router.back();
     };
 
     const deleteMatch = async () => {
@@ -66,14 +44,9 @@ export default function MatchScreen() {
                     text: 'Delete',
                     style: 'destructive',
                     onPress: async () => {
-                        const newMatches = matches.filter((_, i) => i !== parseInt(matchIndex as string));
-                        setMatches(newMatches);
-                        try {
-                            await AsyncStorage.setItem(`matches_${deckId}`, JSON.stringify(newMatches));
-                            router.back();
-                        } catch (error) {
-                            console.error('Error deleting match:', error);
-                        }
+                        const idx = parseInt(matchIndex as string);
+                        await MatchService.deleteMatch(deckId as string, idx);
+                        router.back();
                     },
                 },
             ]

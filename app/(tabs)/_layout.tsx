@@ -24,9 +24,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="match"
+        name="match_tracker"
         options={{
-          title: 'Match',
+          title: 'Match Tracker',
           tabBarIcon: ({ color }) => <MaterialIcons size={28} name="gamepad" color={color} />,
         }}
       />
