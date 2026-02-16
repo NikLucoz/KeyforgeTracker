@@ -15,11 +15,12 @@
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/KeyforgeLogo.png",
-        "backgroundImage":  "./assets/images/KeyforgeLogo.png",
-        "monochromeImage":  "./assets/images/KeyforgeLogo.png"
+        "backgroundImage": "./assets/images/KeyforgeLogo.png",
+        "monochromeImage": "./assets/images/KeyforgeLogo.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.niklucoz.KeyforgeTracker"
     },
     "web": {
       "output": "static",
@@ -30,7 +31,7 @@
       [
         "expo-splash-screen",
         {
-          "image":  "./assets/images/KeyforgeLogo.png",
+          "image": "./assets/images/KeyforgeLogo.png",
           "imageWidth": 300,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
@@ -43,6 +44,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4151231f-dc02-4b48-a1e7-17c85ebe6313"
+      }
     }
   }
 }

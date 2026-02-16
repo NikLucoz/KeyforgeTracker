@@ -1,50 +1,99 @@
-# Welcome to your Expo app 👋
+# KeyforgeTracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native app built with Expo to track your Keyforge decks and local matches. Keep track of your game history, deck details, and opponent information all in one place!
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Deck Management**: Load and display your decks from the Decks of Keyforge API, including SAS ratings, expansions, and house icons.
+- **Match Tracking**: Add, edit, and delete local matches for each deck. Record wins, losses, and opponent deck names manually.
+- **Links**: Direct links to official Keyforge websites for more deck details.
+
+## Installation
+
+### Option 1: Download APK (Recommended for users)
+
+1. Visit the [Releases](https://github.com/NikLucoz/KeyforgeTracker/releases) page
+2. Download the latest APK file
+3. Install it directly on your Android device
+
+### Option 2: Build from source (For developers)
+
+1. **Prerequisites**:
+   - Node.js (v16 or higher)
+   - npm or yarn
+   - Expo CLI: `npm install -g @expo/cli`
+   - A physical device or emulator for testing
+
+2. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/NikLucoz/KeyforgeTracker.git
+   cd KeyforgeTracker
+   ```
+
+3. **Install dependencies**:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+4. **Start the development server**:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+5. **Run on device**:
+   - Scan the QR code with the Expo Go app on your phone, or
+   - Press `a` for Android emulator, `i` for iOS simulator
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Usage
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. **Get your API Key**:
+   - Visit [Decks of Keyforge Sellers and Devs page](https://decksofkeyforge.com/about/sellers-and-devs)
+   - Generate an API key
 
-## Get a fresh project
+2. **Set up the app**:
+   - Open the app and go to Settings
+   - Enter your API key and save it
 
-When you're ready, run:
+3. **Load your decks**:
+   - The app will automatically load your decks from the API
+   - View deck details and house icons
 
-```bash
-npm run reset-project
-```
+4. **Track matches**:
+   - Select a deck to view its match history
+   - Add new matches with wins, losses, and opponent names
+   - Edit or delete existing matches
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## API Key
 
-## Learn more
+This app uses the Decks of Keyforge public API to fetch your deck information. You need a valid API key to access your decks. The API key is stored locally on your device and is not shared with anyone.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Technologies Used
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- React Native
+- Expo
+- TypeScript
+- AsyncStorage for local storage
+- Expo Router for navigation
 
-## Join the community
+## Contributing
 
-Join our community of developers creating universal apps.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Decks of Keyforge](https://decksofkeyforge.com/) for providing the API
+- [Keyforge Game](https://www.keyforgegame.com/) for the amazing game
+- Built with ❤️ for the Keyforge community
