@@ -1,0 +1,33 @@
+export enum House {
+  Brobnar = "Brobnar",
+  Dis = "Dis",
+  Ekwidon = "Ekwidon",
+  Geistoid = "Geistoid",
+  Logos = "Logos",
+  Mars = "Mars",
+  Redemption = "Redemption",
+  Sanctum = "Sanctum",
+  Saurian = "Saurian",
+  Shadows = "Shadows",
+  Skyborn = "Skyborn",
+  StarAlliance = "Star Alliance",
+  Unfathomable = "Unfathomable",
+  Untamed = "Untamed",
+}
+
+export const houseLogos: Record<House, any> = {
+  [House.Brobnar]: require("@/assets/images/game/houses/Brobnar.png"),
+  [House.Dis]: require("@/assets/images/game/houses/Dis.png"),
+  [House.Ekwidon]: require("@/assets/images/game/houses/Ekwidon.png"),
+  [House.Geistoid]: require("@/assets/images/game/houses/Geistoid.png"),
+  [House.Logos]: require("@/assets/images/game/houses/Logos.png"),
+  [House.Mars]: require("@/assets/images/game/houses/Mars.png"),
+  [House.Redemption]: require("@/assets/images/game/houses/Redemption.png"),
+  [House.Sanctum]: require("@/assets/images/game/houses/Sanctum.png"),
+  [House.Saurian]: require("@/assets/images/game/houses/Saurian.png"),
+  [House.Shadows]: require("@/assets/images/game/houses/Shadows.png"),
+  [House.Skyborn]: require("@/assets/images/game/houses/Skyborn.png"),
+  [House.StarAlliance]: require("@/assets/images/game/houses/Star_Alliance.png"),
+  [House.Unfathomable]: require("@/assets/images/game/houses/Unfathomable.png"),
+  [House.Untamed]: require("@/assets/images/game/houses/Untamed.png"),
+};
