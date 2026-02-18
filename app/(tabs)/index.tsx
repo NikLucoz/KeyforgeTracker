@@ -1,6 +1,7 @@
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { Image } from 'expo-image';
-import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { useColorScheme } from '../../hooks/use-color-scheme';
 import DeckComponent from '../../components/keyforgeTracker/DeckButton';
 import { useApiKey } from '../../hooks/use-api-key';
 import { useCachedDecks } from '../../hooks/use-cached-decks';

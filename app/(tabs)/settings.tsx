@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { Linking, StyleSheet, Text, TextInput, TouchableOpacity, View, useColorScheme } from 'react-native';
+import { Linking, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native';
+import { useColorScheme } from '../../hooks/use-color-scheme';
 import { Colors } from '../../constants/theme';
 import { useApiKey } from '../../hooks/use-api-key';
 import { useCachedDecks } from '../../hooks/use-cached-decks';
@@ -21,8 +22,7 @@ export default function Settings() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 20,
-      justifyContent: 'center',
+      padding: 50,
     },
     input: {
       borderWidth: 1,
@@ -63,7 +63,7 @@ export default function Settings() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={{ flexDirection: 'row', marginBottom: 10, flexWrap: 'wrap' }}>
         <Text style={{ color: textColor }}>To set your API key go to </Text>
         <TouchableOpacity onPress={() => {
@@ -124,7 +124,7 @@ export default function Settings() {
       <Text style={{ color: textColor, marginTop: 20, textAlign: 'center' }}>
         Made with ❤️ by NikLucoz
       </Text>
-    </View>
+    </ScrollView>
   );
 }
 

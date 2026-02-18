@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View, useColorScheme } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useColorScheme } from '../../hooks/use-color-scheme';
 import { Colors } from '../../constants/theme';
 
 

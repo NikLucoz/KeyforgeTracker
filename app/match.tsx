@@ -1,7 +1,8 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Alert, Platform, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Platform, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View, useColorScheme } from 'react-native';
+import { Colors } from '@/constants/theme';
 import { Match, MatchService } from '../utils/match-service';
 
 export default function MatchScreen() {
@@ -9,6 +10,8 @@ export default function MatchScreen() {
     const router = useRouter();
     const [match, setMatch] = useState<Match>({ gameMode: 'standard', wins: 0, losses: 0, opponentId: '', opponentName: '', additionalPlayers: [] });
     const [matches, setMatches] = useState<Match[]>([]);
+
+    const colorScheme = useColorScheme() ?? 'light';
 
     useEffect(() => {
         const loadMatches = async () => {
@@ -203,6 +206,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
+        color: "#fff"
     },
     title: {
         fontSize: 24,
