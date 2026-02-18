@@ -1,10 +1,19 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+export type GameMode = "standard" | "multiplayer";
+
+export type Player = {
+  deckName: string;
+  team: "mine" | "opponent";
+};
+
 export type Match = {
+  gameMode: GameMode;
   wins: number;
   losses: number;
   opponentId: string;
   opponentName: string;
+  additionalPlayers?: Player[];
 };
 
 export class MatchService {
@@ -16,7 +25,18 @@ export class MatchService {
     try {
       const saved = await AsyncStorage.getItem(this.getStorageKey(deckId));
       if (saved) {
-        return JSON.parse(saved);
+        const matches: any[] = JSON.parse(saved);
+        return matches.map((m) => ({
+          gameMode: m.gameMode || "standard",
+          wins: m.wins || 0,
+          losses: m.losses || 0,
+          opponentId: m.opponentId || "",
+          opponentName: m.opponentName || "",
+          additionalPlayers: (m.additionalPlayers || []).map((p: any) => ({
+            deckName: p.deckName || p.name || "",
+            team: p.team || "opponent",
+          })),
+        }));
       }
       return [];
     } catch (error) {

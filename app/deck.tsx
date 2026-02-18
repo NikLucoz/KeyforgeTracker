@@ -69,7 +69,23 @@ export default function DeckScreen() {
                                 onPress={() => router.push(`/match?deckId=${deck.keyforgeId}&matchIndex=${index}`)}
                             >
                                 <Text style={styles.matchText}>Wins: {match.wins} | Losses: {match.losses}</Text>
-                                <Text style={styles.matchText}>Opponent: {match.opponentName}</Text>
+                                {match.gameMode === 'standard' && (
+                                    <Text style={styles.matchText}>Opponent: {match.opponentName}</Text>
+                                )}
+                                {match.gameMode === 'multiplayer' && match.additionalPlayers && match.additionalPlayers.length > 0 && (
+                                    <>
+                                        {(() => {
+                                            const myTeam = match.additionalPlayers.filter(p => p.team === 'mine').map(p => p.deckName);
+                                            const oppTeam = match.additionalPlayers.filter(p => p.team === 'opponent').map(p => p.deckName);
+                                            return (
+                                                <>
+                                                    {myTeam.length > 0 && <Text style={styles.matchText}>My Team: {myTeam.join(', ')}</Text>}
+                                                    {oppTeam.length > 0 && <Text style={styles.matchText}>Opponent Team: {oppTeam.join(', ')}</Text>}
+                                                </>
+                                            );
+                                        })()}
+                                    </>
+                                )}
                             </TouchableOpacity>
                         ))}
                     </View>

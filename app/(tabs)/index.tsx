@@ -24,7 +24,7 @@ export default function MyDecksScreen() {
       
       {/* Your screen content goes here */}
       <View style={styles.mydecksheader}>
-        <Text>My decks:</Text>
+        <Text style={{ color: colorScheme === 'dark' ? '#fff' : '#000' }}>My decks:</Text>
       </View>
       {!apiKey ? (
         <Text style={{ color: colorScheme === 'dark' ? '#fff' : '#000' }}>
