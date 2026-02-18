@@ -2,7 +2,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Alert, Platform, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View, useColorScheme } from 'react-native';
-import { Colors } from '@/constants/theme';
 import { Match, MatchService } from '../utils/match-service';
 
 export default function MatchScreen() {
@@ -86,7 +85,7 @@ export default function MatchScreen() {
     };
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 40 }} style={styles.container}>
             <Text style={styles.title}>{isNew ? 'New Match' : 'Edit Match'}</Text>
 
             <View style={styles.toggleContainer}>
@@ -206,7 +205,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        color: "#fff"
     },
     title: {
         fontSize: 24,
@@ -234,7 +232,7 @@ const styles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: '#000000',
         padding: 10,
         borderRadius: 5,
         fontSize: 16,

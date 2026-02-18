@@ -33,7 +33,7 @@
         {
           "image": "./assets/images/KeyforgeLogo.png",
           "imageWidth": 300,
-          "resizeMode": "contain",
+          "contentFit": "contain",
           "backgroundColor": "#ffffff",
           "dark": {
             "backgroundColor": "#000000"
@@ -48,13 +48,17 @@
     "updates": {
       "enabled": true,
       "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/4151231f-dc02-4b48-a1e7-17c85ebe6313"
     },
     "extra": {
       "router": {},
       "eas": {
         "projectId": "4151231f-dc02-4b48-a1e7-17c85ebe6313"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }
